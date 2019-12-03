@@ -612,7 +612,7 @@ static bool setup_bcb(const int socket) {
 
     // c8. setup the bcb command
     std::string err;
-    if (write_bootloader_message(options, &err)) {
+    if (!write_bootloader_message(options, &err)) {
         LOG(ERROR) << "failed to set bootloader message: " << err;
         write_status_to_socket(-1, socket);
         return false;
